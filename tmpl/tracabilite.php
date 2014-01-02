@@ -10,37 +10,23 @@
 // no direct access
 defined('_JEXEC') or die;
 ?>
-<aside class="grid__item one-third aside-infos aside-infos--bx <?php echo $params->get('moduleclass_sfx'); ?>">
-	<h2 class="aside-infos__title"><?php echo $module->title; ?></h2>
-
-    
-    <?php // Est-ce qu'il y a un caroussel ? ?>
-	<?php if($params->get('caroussel') == 1) : ?>
-        <ul class="bxslider slider-recette">
-
-        <?php foreach ($list as $item) : ?>
-
-            <?php 
-                $images = json_decode($item->images); 
-            ?>
-
-            <li class="slider-recette__layout-item">
-            	<a href="<?php echo $item->link; ?>">
-                    <img src="<?php echo htmlspecialchars($images->image_intro); ?>" alt="<?php echo htmlspecialchars($images->image_intro_alt); ?>" />
-                    <div class="slider-recette__item-txt"><span><?php echo $item->title; ?></span></div>
-              </a>
-            </li>
-
-        <?php endforeach; ?>
-
-    	</ul>
-    <?php endif; ?>
+<div class="adherent">
+		
+	<h2 class="mozaic__title">Les adhérents</h2>
 	
-    <?php // Est-ce qu'il y a un sous titre ? ?>
-	<?php if($params->get('subtitle') != '') : ?>
-        <h3 class="aside-infos__subtitle"><?php echo $params->get('subtitle'); ?></h3>
-    <?php endif; ?>
+	<ul class="bxslider slider-adherent">
 
-    <?php echo JHtml::_('string.truncate', strip_tags($featured->introtext, '<span><br>'), 120); ?>
-	<p class="aside-infos__readmore"><a href="<?php echo $featured->link; ?>">Lire la suite</a></p>
-</aside>
+	<?php foreach ($list as $item) : ?>
+
+	    <li class="slider-recette__layout-item">
+	    	<a href="<?php echo $item->link; ?>">
+	            <img src="/images/6-<?php echo $item->dep . '/' . $item->photoProducteur; ?>" alt="<?php echo $item->nomPrenom; ?>" />
+	            <div class="slider-recette__item-txt"><span><?php echo $item->nomFerme; ?></span></div>
+	        </a>
+	    </li>
+
+	<?php endforeach; ?>
+
+	</ul>
+
+</div>

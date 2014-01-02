@@ -14,7 +14,8 @@ defined('_JEXEC') or die;
 require_once dirname(__FILE__).'/helper.php';
 
 $list = modFcAdherentsHelper::getList($params);
-$featured = modFcAdherentsHelper::getFeatured($params);
+
+//var_dump($list);
 
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 
